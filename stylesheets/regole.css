@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'CustomFont';
+  src: url('../fonts/alagard.ttf') format('truetype');
+}
+
+.centered-text {
+  text-align: center;
+  color: white;
+  font-family: 'CustomFont', sans-serif;
+  font-size: 24px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  color: white;
+  background-color: black;
+  font-family: 'CustomFont', Arial, sans-serif;
+}

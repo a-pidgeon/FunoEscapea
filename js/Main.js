@@ -23,6 +23,12 @@ class Main {
       }
     });
 
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'r') { // Usa 'e' per interagire
+        this.interactWithObject();
+      }
+    });
+
     // Add event listeners for the control buttons
     document.getElementById('control-up').addEventListener('click', () => {
       this.moveDirection('nord');
@@ -121,13 +127,25 @@ class Main {
       this.stanzaCorrente._Personaggio.interagisci(this);
       if(this.stanzaCorrente._Personaggio = 'Abitante'){
         document.getElementById('textbox').innerHTML = 'Abitante:"Buongiorno disperso, spero che riuscirai a trovare la strada di casa, prendi questo!" ti da una chiave"';
-        this.aggiungiOggetto(chiaveBaule)
+        //this.aggiungiOggetto(chiaveBaule)
+        this.interactWithObject;
       }
     } else {
       document.getElementById('textbox').innerHTML = ("Non c'e' nessuno con cui interagire qui.");
     }
   }
-
+  
+  interactWithObject() {
+    if (this.stanzaCorrente._oggetti) {
+      const oggetto = this.stanzaCorrente._oggetti;
+      this.aggiungiOggetto(oggetto);
+      document.getElementById('textbox').innerHTML = `Hai raccolto: ${oggetto.nome}`;
+      this.stanzaCorrente._oggetti = null; // Rimuovi l'oggetto dalla stanza
+    } else {
+      document.getElementById('textbox').innerHTML = "Non c'è nessun oggetto da raccogliere qui.";
+    }
+  }
+  
   aggiungiOggetto(oggetto) {
     this.inventario.push(oggetto);
     this.updateInventoryUI();

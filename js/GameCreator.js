@@ -16,7 +16,7 @@ class GameCreator {
   }
 
   creaStanze() {
-    var fermataOvest = new Stanza('Fermata Ovest', 'sei arrivato alla fermata ovest', null, null, null, null, null, 'images/map/FermataOvest.png', null);
+    var fermataOvest = new Stanza('Fermata Ovest', 'sei arrivato alla fermata ovest, a nord si trova un sentiero', null, null, null, null, null, 'images/map/FermataOvest.png', null);
     var percorso = new Stanza('Percorso', 'arrivi su un sentiero e vedi una cassa di fronte a te, a est vedi un abitazione', null, null, null, null, null, 'images/map/Percorso.png', null);
     var casa = new Stanza('Casa', 'sei arrivato ad una casa sinistra con uno strano abitante, a sud si trova uno scantinato', null, null, null, null, null, 'images/map/Casa1.png', null);
     var scantinato = new Stanza('Scantinato', 'sei arrivato ad uno scantinato, vedi una torcia.', null, null, null, null, null, 'images/map/Scantinato1.png', null);
