@@ -122,7 +122,7 @@ class Main {
     if (this.stanzaCorrente._Personaggio) {
       this.stanzaCorrente._Personaggio.interagisci(this);
     } else {
-      document.getElementById('textbox').innerHTML = "Non c'è nessuno con cui interagire qui.";
+      document.getElementById('textbox').innerHTML = "Non c'e' nessuno con cui interagire qui.";
     }
   }
 
@@ -133,7 +133,7 @@ class Main {
       document.getElementById('textbox').innerHTML = `Hai raccolto: ${oggetto.nome}`;
       this.stanzaCorrente._oggetti = null; // Rimuovi l'oggetto dalla stanza
     } else {
-      document.getElementById('textbox').innerHTML = "Non c'è nessun oggetto da raccogliere qui.";
+      document.getElementById('textbox').innerHTML = "Non c'e' nessun oggetto da raccogliere qui.";
     }
   }
 
@@ -156,16 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 export default Main;
-
-
-
-
-
-
-
-
-
-
 
 
 //my mental health is deteriorating rapidly, i'm not sure what to do, i'm just going to sit here and do nothing, i'm just going to sit here and do nothing, i'm just going to sit here and do nothing, despair is killing me.

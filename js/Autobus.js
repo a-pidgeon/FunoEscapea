@@ -20,8 +20,8 @@ class Autobus extends Personaggio {
 
         // Filtra l'inventario per rimuovere la torcia
         gioco.inventario = gioco.inventario.filter(item => item.nome !== 'torcia');
-
-        this.isVivo = false;
+        gioco.updateInventoryUI();
+        gioco.stanze['Scantinato'].setOggetti(new Oggetto('torcia', 'Una torcia sempre accesa'));
     }
 }
 

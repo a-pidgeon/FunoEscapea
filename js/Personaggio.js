@@ -1,8 +1,7 @@
 class Personaggio {
-    constructor(nome, descrizione, isOstile = false) {
+    constructor(nome, descrizione) {
         this.nome = nome;
         this.descrizione = descrizione;
-        this.isOstile = isOstile;
         this.isVivo = true;
     }
 

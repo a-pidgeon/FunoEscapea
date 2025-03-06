@@ -16,12 +16,22 @@ class Baule extends Personaggio {
         console.log("Il baule è chiuso, serve una chiave per aprirlo.");
         for (let i in gioco.inventario) {
             if (gioco.inventario[i].nome == 'chiave baule') {
-                gioco.inventario.splice(i, 1);
+                gioco.inventario = gioco.inventario.filter(item => item.nome !== 'chiave baule');
                 document.getElementById('textbox').innerHTML = "Hai aperto la cassa ed hai trovato un biglietto dell'autobus! Forse potrai usare la fermata adesso?";
                 console.log("Hai aperto la cassa ed hai trovato un biglietto dell'autobus!");
 
                 gioco.stanze['Fermata Ovest'].setImmagine("images/map/FermataOvestAutobussy.png");
                 gioco.stanze['Fermata Ovest'].setPersonaggio(new Autobus());
+
+                this.daiOggetto(gioco);
+                this.isVivo = false;
+            }else if(gioco.inventario[i].nome =='fumo'){
+                gioco.inventario = gioco.inventario.filter(item => item.nome !== 'fumo');
+                document.getElementById('textbox').innerHTML = "Hai trovato un fumo leggendario, così potente da poter farti ritornare a casa";
+                console.log("Hai trovato il fumo e ora puoi tornare a casa");
+
+                gioco.stanze['Fermata Sud'].setImmagine("images/map/FermataSudAutobussy.png");
+                gioco.stanze['Fermata Sud'].setPersonaggio(new Autobus());
 
                 this.daiOggetto(gioco);
                 this.isVivo = false;

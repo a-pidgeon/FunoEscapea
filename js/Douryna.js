@@ -1,4 +1,7 @@
+//replit merda
 import Personaggio from './Personaggio.js';
+import Oggetto from './Oggetto.js'; // Importa la classe Oggetto
+import Autobus from './Autobus.js'; // Importa la classe Autobus
 
 class Douryna extends Personaggio {
     constructor() {
@@ -6,28 +9,42 @@ class Douryna extends Personaggio {
         this.haRubatoPollo = false; // Flag per assicurarsi che rubi il pollo solo una volta
     }
 
-    interagisci(giocatore) {
+    interagisci(gioco) {
         if (!this.isVivo) {
             return;
         }
 
+        if(gioco.inventario.some(item => item.nome === 'pollo fritto')){
+            this.rubaPollo(gioco);
+        }
+        else{
+            document.getElementById('textbox').innerHTML = "...mmm...pollo fritto...";
+        }
+        
         console.log(`Parli con ${this.nome}: "${this.descrizione}"`);
-        this.rubaPollo(giocatore);
     }
 
-    rubaPollo(protagonista) {
-        if (!this.haRubatoPollo && protagonista.inventario.includes('pollo')) {
-            console.log(`${this.nome} ti guarda con occhi famelici e in un attimo ti ruba il pollo fritto!`);
-
-            // Rimuove il pollo dall'inventario del giocatore
-            let index = protagonista.inventario.indexOf('pollo');
-            if (index !== -1) {
-                protagonista.inventario.splice(index, 1);
+    rubaPollo(gioco) {
+        console.log("niga")
+        if (!this.haRubatoPollo) {
+                    document.getElementById("textbox").innerHTML = "Ti guarda con occhi famelici e in un attimo ti ruba il pollo fritto lasciando cadere una chiave!";
+                    this.daiOggetto(gioco);
+                    gioco.inventario = gioco.inventario.filter(item => item.nome !== 'pollo fritto');
+                    gioco.updateInventoryUI();
+                    this.haRubatoPollo = true;
+                }
             }
-
-            this.haRubatoPollo = true;
+        
+    
+    daiOggetto(inventario) {
+            if (!this.oggettoDato) {
+                let oggetto = new Oggetto('chiave arrugginita', 'Una chiave arrugginita dalla strana forma'); // Crea un nuovo oggetto
+                console.log(`${this.nome} ti sorride e ti dà un ${oggetto.nome}.`);
+                inventario.aggiungiOggetto(oggetto); // Aggiungi l'oggetto all'inventario del giocatore
+                this.oggettoDato = true;
+            }
         }
     }
-}
+
 
 export default Douryna;
