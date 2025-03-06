@@ -35,6 +35,10 @@ class Stanza {
   setOggetti(value) {
     this._oggetti = value;
   }
+
+  setImmagine(value) {
+    this._immagine = value;
+  }
 }
 
 export default Stanza;

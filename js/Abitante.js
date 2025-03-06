@@ -1,4 +1,6 @@
 import Personaggio from './Personaggio.js';
+import Oggetto from './Oggetto.js'; // Importa la classe Oggetto
+
 class Abitante extends Personaggio {
   constructor() {
       super('Abitante', 'Un semplice abitante del villaggio.', false);
@@ -17,12 +19,12 @@ class Abitante extends Personaggio {
 
   daiOggetto(protagonista) {
       if (!this.oggettoDato) {
-          let oggetto = 'moneta di oro'; // Puoi cambiare l'oggetto dato
-          console.log(`${this.nome} ti sorride e ti dà un ${oggetto}.`);
-          protagonista.inventario.push(oggetto);
+          let chiaveBaule = new Oggetto('chiave baule', 'Una chiave dorata'); // Crea un nuovo oggetto
+          console.log(`${this.nome} ti sorride e ti dà un ${chiaveBaule.nome}.`);
+          protagonista.aggiungiOggetto(chiaveBaule); // Aggiungi l'oggetto all'inventario del giocatore
           this.oggettoDato = true;
       }
   }
 }
 
-export { Douryna, Abitante };
+export default Abitante; 

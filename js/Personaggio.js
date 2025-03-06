@@ -10,7 +10,7 @@ class Personaggio {
         if (!this.isVivo) {
             return;
         }
-
+        document.getElementById('textbox').innerHTML = `${this.nome}  ${this.descrizione}`;
         console.log(`Parli con ${this.nome}: "${this.descrizione}"`);
     }
 

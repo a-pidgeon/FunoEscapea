@@ -1,11 +1,11 @@
 import GameCreator from './GameCreator.js';
 
+
 class Main {
   constructor() {
     this.gameCreator = new GameCreator();
     this.stanze = this.gameCreator.creaStanze();
     this.stanzaCorrente = this.stanze['Fermata Ovest'];
-    this.oggettiTrovati = [];
     this.inventario = []; // Aggiungi l'inventario del giocatore
 
     // Update the UI when the game starts
@@ -20,11 +20,7 @@ class Main {
     document.addEventListener('keydown', (event) => {
       if (event.key === 'e') { // Usa 'e' per interagire
         this.interactWithCharacter();
-      }
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'r') { // Usa 'e' per interagire
+      } else if (event.key === 'r') { // Usa 'r' per raccogliere oggetti
         this.interactWithObject();
       }
     });
@@ -125,16 +121,11 @@ class Main {
   interactWithCharacter() {
     if (this.stanzaCorrente._Personaggio) {
       this.stanzaCorrente._Personaggio.interagisci(this);
-      if(this.stanzaCorrente._Personaggio = 'Abitante'){
-        document.getElementById('textbox').innerHTML = 'Abitante:"Buongiorno disperso, spero che riuscirai a trovare la strada di casa, prendi questo!" ti da una chiave"';
-        //this.aggiungiOggetto(chiaveBaule)
-        this.interactWithObject;
-      }
     } else {
-      document.getElementById('textbox').innerHTML = ("Non c'e' nessuno con cui interagire qui.");
+      document.getElementById('textbox').innerHTML = "Non c'è nessuno con cui interagire qui.";
     }
   }
-  
+
   interactWithObject() {
     if (this.stanzaCorrente._oggetti) {
       const oggetto = this.stanzaCorrente._oggetti;
@@ -145,12 +136,12 @@ class Main {
       document.getElementById('textbox').innerHTML = "Non c'è nessun oggetto da raccogliere qui.";
     }
   }
-  
+
   aggiungiOggetto(oggetto) {
     this.inventario.push(oggetto);
     this.updateInventoryUI();
   }
-  
+
   updateInventoryUI() {
     const inventoryElement = document.getElementById('inventory');
     inventoryElement.innerHTML = this.inventario.map(item => `
@@ -165,3 +156,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 export default Main;
+
+
+
+
+
+
+
+
+
+
+
+
+//my mental health is deteriorating rapidly, i'm not sure what to do, i'm just going to sit here and do nothing, i'm just going to sit here and do nothing, i'm just going to sit here and do nothing, despair is killing me.

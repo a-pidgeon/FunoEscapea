@@ -1,6 +1,10 @@
 import Personaggio from './Personaggio.js';
+import Douryna from './Douryna.js';
 import Stanza from './Stanza.js';
 import Oggetto from './Oggetto.js';
+import Abitante from './Abitante.js';
+import Baule from './Baule.js';
+import Autobus from './Autobus.js';
 
 class GameCreator {
   constructor() {
@@ -15,15 +19,16 @@ class GameCreator {
     let oggetto = new Oggetto();
   }
 
-  creaStanze() {
-    var fermataOvest = new Stanza('Fermata Ovest', 'sei arrivato alla fermata ovest, a nord si trova un sentiero', null, null, null, null, null, 'images/map/FermataOvest.png', null);
-    var percorso = new Stanza('Percorso', 'arrivi su un sentiero e vedi una cassa di fronte a te, a est vedi un abitazione', null, null, null, null, null, 'images/map/Percorso.png', null);
-    var casa = new Stanza('Casa', 'sei arrivato ad una casa sinistra con uno strano abitante, a sud si trova uno scantinato', null, null, null, null, null, 'images/map/Casa1.png', null);
-    var scantinato = new Stanza('Scantinato', 'sei arrivato ad uno scantinato, vedi una torcia.', null, null, null, null, null, 'images/map/Scantinato1.png', null);
-    var incrocio = new Stanza('Incrocio', 'ti trovi su un incrocio', null, null, null, null, null, 'images/map/Incrocio.png', null);
-    var stanzaDouryna = new Stanza('Stanza Dorina', 'Sei arrivato nella stanza di alphadouryna', null, null, null, null, null, 'images/map/StanzaDorina.png', null);
-    var fermataSud = new Stanza('Fermata Sud', 'sei arrivato alla fermata sud', null, null, null, null, null, 'images/map/FermataSud.png', null);
-    var cassonetto = new Stanza('Cassonetto', 'sei arrivato al cassonetto', null, null, null, null, null, 'images/map/Cassonetto.png', null);
+    creaStanze() {
+        var fermataOvest = new Stanza('Fermata Ovest', 'Sei alla fermata ovest. Si intravede un sentiero nelle vicinanze.', null, null, null, null, null, 'images/map/FermataOvest.png', null);
+        var percorso = new Stanza('Percorso', 'Giunto alla fine del sentiero trovi un baule chiuso da un lucchetto dorato vicino a quella che sembra un\'antica villa.', null, null, null, null, null, 'images/map/Percorso.png', null);
+        var casa = new Stanza('Casa', 'Sei in una casa dall\'aspetto sinistro, abitata da una figura misteriosa. Noti inoltre una porta che sembra portare ad uno scantinato.', null, null, null, null, null, 'images/map/Casa1.png', null);
+        var scantinato = new Stanza('Scantinato', 'Sei in uno scantinato. Una torcia attira la tua attenzione.', null, null, null, null, null, 'images/map/Scantinato1.png', null);
+        var incrocio = new Stanza('Incrocio', 'Ti trovi a un incrocio.', null, null, null, null, null, 'images/map/Incrocio.png', null);
+        var stanzaDouryna = new Stanza('Stanza Dorina', 'Sei nella stanza di Alphadouryna.', null, null, null, null, null, 'images/map/Alfa Douryna.png', null);
+        var fermataSud = new Stanza('Fermata Sud', 'Sei alla fermata sud.', null, null, null, null, null, 'images/map/FermataSud.png', null);
+        var cassonetto = new Stanza('Cassonetto', 'Sei vicino a un cassonetto.', null, null, null, null, null, 'images/map/Cassonetto.png', null);
+    
 
     fermataOvest.setNord(percorso);
     percorso.setEst(casa);
@@ -32,26 +37,31 @@ class GameCreator {
     casa.setSud(scantinato);
     scantinato.setNord(casa);
 
-    fermataSud.nord = stanzaDouryna;
-    stanzaDouryna.sud = fermataSud;
-    stanzaDouryna.nord = incrocio;
-    incrocio.sud = stanzaDouryna;
-    incrocio.est = cassonetto;
-    cassonetto.ovest = incrocio;
+    fermataSud.setNord(stanzaDouryna);
+    stanzaDouryna.setSud(fermataSud);
+    stanzaDouryna.setNord(incrocio);
+    incrocio.setEst(cassonetto);
+    incrocio.setSud(stanzaDouryna);
+    cassonetto.setOvest(incrocio);
 
     // For now, commented out as Oggetto class implementation is missing
     // scantinato.oggetti = ['torcia'];
     // cassonetto.oggetti = ['pollo'];
 
     var chiaveBaule = new Oggetto('chiave baule', 'Una chiave dorata');
-    let torcia = new Oggetto('torcia', 'Una torcia');
+    let torcia = new Oggetto('torcia', 'Una torcia sempre accesa');
     let bigliettoSud = new Oggetto('biglietto', 'Un biglietto per napoli');
     let polloKFC = new Oggetto('pollo', 'Un bel pollo fritto del KFC');
-    let chiavePorta = new Oggetto('chiave', 'Una chiave misteriosa');
-    let coltello = new Oggetto('coltello', 'Un coltello da cucina incredibilmente affilato...');
+    let chiavePorta = new Oggetto('chiave', 'Una vecchia chiave arrugginita');
+    let coltello = new Oggetto('coltello', 'Un coltello da macellaio incredibilmente affilato...');
 
-    casa.setPersonaggio(this.creaPersonaggio('Abitante', 'Un semplice abitante di funo', false));
+    casa.setPersonaggio(new Abitante());
+    percorso.setPersonaggio(new Baule());
+    scantinato.setPersonaggio(this.creaPersonaggio('porta di abete', "una porta di legno massiccio, impossibile da sfondare, con un'insolita serratura arrugginita", false));
+    incrocio.setPersonaggio(this.creaPersonaggio('pianta rampicante mutante', "una pianta rampicante gigantesca blocca il passaggio a NORD, nonostante sia molto resistente agli impatti e non possibile da oltrepassare con solo forza bruta, una pianta è pur sempre una pianta", false));
     stanzaDouryna.setPersonaggio(this.creaPersonaggio('Douryna', 'Una douryna di funo', false));
+
+      scantinato.setOggetti(torcia);
 
     let stanze = {
       'Fermata Ovest': fermataOvest,
