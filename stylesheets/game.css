@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: 'CustomFont';
   src: url('../fonts/alagard.ttf') format('truetype');
@@ -19,9 +20,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2vh;
-  width: 90%;
-  max-width: 1200px;
+  gap: 3vh;
+  width: 95%;
+  max-width: 1400px;
 }
 
 .top-section {
@@ -33,14 +34,14 @@ body {
 
 .room-image {
   width: 70%;
-  height: 40vh;
-  border: 2px solid black;
-  border-radius: 10px;
+  height: 50vh; /* Aumentata l'altezza */
+  border: 3px solid white; /* Bordo più spesso */
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: black;
-  font-size: 2vh;
+  font-size: 2.5vh; /* Font più grande */
   overflow: hidden;
   position: relative;
 }
@@ -59,26 +60,27 @@ body {
 
 .inventory {
   width: 28%;
-  height: 40vh;
-  border: 2px solid black;
-  border-radius: 10px;
+  height: 50vh; /* Aumentata l'altezza */
+  border: 3px solid white; /* Bordo più spesso */
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   background-color: #303030;
-  font-size: 2vh;
-  padding: 10px;
+  font-size: 2.5vh; /* Font più grande */
+  padding: 15px;
 }
 
 .inventory-item {
-  width: 80%;
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid white;
-  border-radius: 5px;
+  width: 85%; /* Leggermente più largo */
+  padding: 15px; /* Più padding */
+  margin: 7px 0; /* Margine aumentato */
+  border: 2px solid white; /* Bordo più spesso */
+  border-radius: 7px;
   text-align: center;
   background-color: #3b3b3b;
+  font-size: 2.5vh; /* Font più grande */
 }
 
 .bottom-section {
@@ -91,35 +93,35 @@ body {
 
 .textbox {
   width: 70%;
-  height: 19vh;
-  border: 2px solid white;
-  border-radius: 10px;
+  height: 25vh; /* Aumentata l'altezza */
+  border: 3px solid white; /* Bordo più spesso */
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: black;
-  font-size: 3vh;
-  padding: 10px;
+  font-size: 3.5vh; /* Font più grande */
+  padding: 15px;
   text-align: center;
 }
 
 .controls {
   display: grid;
-  grid-template-columns: repeat(3, 8vh);
-  grid-template-rows: repeat(2, 8vh);
-  gap: 2vh;
+  grid-template-columns: repeat(3, 10vh); /* Pulsanti più grandi */
+  grid-template-rows: repeat(2, 10vh); /* Pulsanti più grandi */
+  gap: 2.5vh; /* Gap maggiore */
 }
 
 .controls div {
-  width: 8vh;
-  height: 8vh;
-  border: 2px solid white;
-  border-radius: 5px;
+  width: 10vh; /* Pulsanti più grandi */
+  height: 10vh; /* Pulsanti più grandi */
+  border: 3px solid white; /* Bordo più spesso */
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #303030;
-  font-size: 2vh;
+  font-size: 3vh; /* Font più grande */
   cursor: pointer;
   font-family: 'CustomFont', Arial, sans-serif;
   transition: background-color 0.1s, transform 0.1s;
@@ -151,4 +153,50 @@ body {
 .controls div:nth-child(4) {
   grid-column: 3;
   grid-row: 2;
+}
+
+/* Media query per schermi molto grandi */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1600px;
+  }
+  
+  .room-image, .inventory {
+    height: 55vh;
+  }
+  
+  .textbox {
+    height: 30vh;
+  }
+}
+
+/* Media query per dispositivi mobili in orientamento orizzontale */
+@media (max-width: 1200px) {
+  .container {
+    gap: 2vh;
+  }
+  
+  .room-image, .inventory {
+    height: 45vh;
+  }
+  
+  .textbox {
+    height: 22vh;
+    font-size: 3vh;
+  }
+}
+
+/* Media query per dispositivi mobili più piccoli */
+@media (max-width: 768px) {
+  .room-image {
+    width: 65%;
+  }
+  
+  .inventory {
+    width: 33%;
+  }
+  
+  .textbox {
+    font-size: 2.8vh;
+  }
 }
