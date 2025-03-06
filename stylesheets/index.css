@@ -1,0 +1,49 @@
+html,
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 200vw;
+  height: 200vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  max-width: 180%;
+  /* Larghezza massima per non sforare */
+  max-height: 180vh;
+  /* Altezza massima per non sforare */
+  object-fit: contain;
+  /* Adatta l'immagine mantenendo le proporzioni */
+}
+
+.play-button {
+  position: absolute;
+  top: 60%;
+  /* Sposta il bottone sopra il pulsante "PLAY" */
+  left: 42%;
+  /* Centra meglio */
+  width: 16%;
+  /* Dimensione in base all'immagine */
+  height: 8%;
+  background: rgba(255, 255, 255, 0);
+  /* Pulsante invisibile */
+  border: none;
+  cursor: pointer;
+}
+
+.play-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  /* Leggera evidenza se passi sopra */
+}

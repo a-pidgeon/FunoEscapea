@@ -1,16 +1,27 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funo Escape</title>
+  <link rel="stylesheet" href="stylesheets/index.css">
 </head>
 
 <body>
-  Hello world
-  <script src="script.js"></script>
+  <div class="container">
+    <img src="images/intro.png" alt="Game Intro" class="background" width="90%" height="90%">
+    <button class="play-button" onclick="window.location.href='game.html'">PLAY</button>
+  </div>
+
+  <script>
+  document.addEventListener('keydown', function (evento) {
+    if (evento.key === 'Enter') {
+      window.location.href = "game.html";
+    }
+  });
+  </script>
 </body>
 
 </html>
